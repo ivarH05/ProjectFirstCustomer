@@ -126,18 +126,20 @@ public class PlayerController : MonoBehaviour
             CameraTilt.localRotation = Quaternion.Euler(new Vector3(Mathf.Clamp(value, -360, 80), 0, 0));
 
         float oldheight = cc.height;
+        float newheight = cc.height;
         if (isCrouching)
-            cc.height = Mathf.Lerp(cc.height, 1.2f, timeStep * 10);
+            newheight = Mathf.Lerp(cc.height, 1.2f, timeStep * 10);
         else
-            cc.height = Mathf.Lerp(cc.height, 1.8f, timeStep * 10);
-        PlayerTransform.position += new Vector3(0, oldheight - cc.height, 0);
+            newheight = Mathf.Lerp(cc.height, 1.8f, timeStep * 10);
+        cc.Move(new Vector3(0, newheight - oldheight, 0));
+        cc.height = newheight;
         cc.center = new Vector3(0, 0.6f - cc.height / 3, 0);
     }
 
     private void MoveCharacter()
     {
         GroundData ground = GetGroundData();
-        isGrounded = ground != null && ground.distance < 1 || cc.isGrounded;
+        isGrounded = ground != null && ground.distance < cc.height / 2 + 0.1f || cc.isGrounded;
         if(ground != null)
         {
             float slidethreshold = 0.5f;
@@ -240,13 +242,14 @@ public class PlayerController : MonoBehaviour
 
         for (int i = 0; i < offsets.Length; i++)
         {
-            Vector3 offset = offsets[i];
+            Vector3 offset = offsets[i] + cc.center;
             RaycastHit hit;
             if (!Physics.Raycast(PlayerTransform.position + offset, Vector3.down, out hit, height))
             {
                 Debug.DrawRay(PlayerTransform.position + offset, Vector3.down, Color.red);
                 continue;
             }
+            Debug.DrawLine(PlayerTransform.position + offset, hit.point, Color.green);
             hits++;
 
             result.Ground = hit.transform.gameObject;

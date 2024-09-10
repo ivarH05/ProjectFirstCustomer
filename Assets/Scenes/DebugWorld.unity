@@ -1175,7 +1175,7 @@ GameObject:
   - component: {fileID: 803032160}
   - component: {fileID: 803032159}
   m_Layer: 0
-  m_Name: Sky and Fog Volume (1)
+  m_Name: Golden Hour Volume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1196,7 +1196,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1216,7 +1216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_IsGlobal: 0
   priority: 1
-  blendDistance: 2.5
+  blendDistance: 5
   weight: 1
   sharedProfile: {fileID: 11400000, guid: 30024bbd4c4cb0a4392c9dad74209edc, type: 2}
 --- !u!4 &803032161
@@ -1228,7 +1228,7 @@ Transform:
   m_GameObject: {fileID: 803032158}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5, y: 5, z: -10}
+  m_LocalPosition: {x: -5.5, y: 3.75, z: -9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2179,6 +2179,7 @@ GameObject:
   - component: {fileID: 1452757798}
   - component: {fileID: 1452757801}
   - component: {fileID: 1452757800}
+  - component: {fileID: 1452757802}
   m_Layer: 0
   m_Name: Mesh
   m_TagString: Untagged
@@ -2196,7 +2197,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.9, z: 0.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 840011819}
@@ -2251,6 +2252,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1452757797}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1452757802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1452757797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07462dc0c5e4ca6499eb3a65e33b987f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 315169200}
 --- !u!1 &1456415078
 GameObject:
   m_ObjectHideFlags: 0
@@ -2805,7 +2819,7 @@ Camera:
     height: 1
   near clip plane: 0.2
   far clip plane: 1000
-  field of view: 60
+  field of view: 90
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -2818,7 +2832,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 0
   m_AllowMSAA: 0
-  m_AllowDynamicResolution: 0
+  m_AllowDynamicResolution: 1
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -2881,8 +2895,8 @@ MonoBehaviour:
   flipYMode: 0
   xrRendering: 1
   fullscreenPassthrough: 0
-  allowDynamicResolution: 0
-  customRenderingSettings: 0
+  allowDynamicResolution: 1
+  customRenderingSettings: 1
   invertFaceCulling: 0
   probeLayerMask:
     serializedVersion: 2
@@ -2999,7 +3013,7 @@ MonoBehaviour:
   m_Profile: {fileID: 11400000, guid: 3b6c65ad4c233d34a9d9a75339c0ed17, type: 2}
   m_StaticLightingSkyUniqueID: 4
   m_StaticLightingCloudsUniqueID: 0
-  m_StaticLightingVolumetricClouds: 0
+  m_StaticLightingVolumetricClouds: 1
 --- !u!4 &2013410475
 Transform:
   m_ObjectHideFlags: 1
