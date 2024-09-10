@@ -14,10 +14,11 @@ public class PlayerController : MonoBehaviour
     public Camera cam;
 
     [Header("Settings")]
-    public float crouchSpeed = 2;
+    public float crouchSpeed = 1.5f;
+    public float sneakSpeed = 2.25f;
     public float walkSpeed = 4;
-    public float runSpeed = 6;
     public float sprintSpeed = 8;
+    [Space()]
     public float airControll = 0.075f;
     public float jumpPower = 5;
 
@@ -27,7 +28,7 @@ public class PlayerController : MonoBehaviour
     public bool isGrounded;
     public bool isSliding;
     public bool isCrouching;
-    public bool isRunning;
+    public bool isSneakning;
     public bool isSprinting;
 
     public Vector3 velocity;
@@ -84,11 +85,11 @@ public class PlayerController : MonoBehaviour
         {
             if (shiftTimer > UserSettings.inputBuffer)
             {
-                isRunning = false;
+                isSneakning = false;
                 isSprinting = false;
             }
             else
-                isRunning = !isRunning;
+                isSneakning = !isSneakning;
         }
 
 
@@ -97,7 +98,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyMapping.Crouch))
             controllTimer = 0;
 
-        if (Input.GetKey(KeyMapping.Crouch) && (controllTimer > UserSettings.inputBuffer || !isRunning))
+        if (Input.GetKey(KeyMapping.Crouch) && (controllTimer > UserSettings.inputBuffer || !isSneakning))
             isCrouching = true;
 
         if (Input.GetKeyUp(KeyMapping.Crouch))
@@ -108,7 +109,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                isRunning = false;
+                isSneakning = false;
                 isCrouching = false;
             }
         }
@@ -197,8 +198,8 @@ public class PlayerController : MonoBehaviour
             return crouchSpeed;
         if (isSprinting)
             return sprintSpeed;
-        if (isRunning)
-            return runSpeed;
+        if (isSneakning)
+            return sneakSpeed;
         return walkSpeed;
 
     }
