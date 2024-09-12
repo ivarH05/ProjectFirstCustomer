@@ -2,6 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public static class Player
+{
+    public static PlayerController controller;
+    public static InteractSCR interact;
+
+    public static Vector3 Position { get { return controller.PlayerTransform.position; } }
+}
+
 public class PlayerController : MonoBehaviour
 {
     [Header("Setup")]
@@ -37,7 +45,6 @@ public class PlayerController : MonoBehaviour
 
     private float shiftTimer;
     private float controllTimer;
-    private float lastSlid;
 
     public class GroundData
     {
@@ -53,6 +60,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Player.controller = this;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -63,12 +71,12 @@ public class PlayerController : MonoBehaviour
         while (timer > timeStep)
         {
             timer -= timeStep;
-            MoveCamera();
             MoveCharacter();
 
             velocity.y -= 9.81f * timeStep;
             cc.Move(velocity * timeStep);
         }
+        MoveCamera();
         ManageInputs();
     }
 
@@ -145,12 +153,11 @@ public class PlayerController : MonoBehaviour
             float slidethreshold = 0.5f;
             if (ground.physicsMaterial != null)
                 slidethreshold = ground.physicsMaterial.staticFriction;
-            if(ground.angle * 0.8f < slidethreshold)
+            if(ground.angle < slidethreshold)
             {
                 velocity += ground.normal * timeStep * Mathf.Clamp(3 / ground.distance, 1, 10);
                 isSliding = true;
                 isGrounded = false;
-                lastSlid = 0.5f;
             }
             else
                 isSliding = false;
@@ -159,8 +166,6 @@ public class PlayerController : MonoBehaviour
         {
             isSliding = false;
         }
-        if(!isSliding)
-            lastSlid = Mathf.Clamp01(lastSlid + timeStep * 2);
 
 
         Vector2 movementInput = GetMovementInput();
@@ -186,8 +191,8 @@ public class PlayerController : MonoBehaviour
             dynamicFriction = airControll / 4;
         }
 
-        velocity = Vector3.Lerp(velocity, new Vector3(0, velocity.y, 0), dynamicFriction * lastSlid);
-        velocity += movementVector * GetSpeedMultipier() * staticFriction * lastSlid;
+        velocity = Vector3.Lerp(velocity, new Vector3(0, velocity.y, 0), dynamicFriction);
+        velocity += movementVector * GetSpeedMultipier() * staticFriction;
     }
 
     private float GetSpeedMultipier()
