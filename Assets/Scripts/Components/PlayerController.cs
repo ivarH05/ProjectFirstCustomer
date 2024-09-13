@@ -7,6 +7,7 @@ public static class Player
     public static PlayerController controller;
     public static InteractSCR interact;
 
+    public static Camera camera { get { return controller.cam; } }
     public static Vector3 Position { get { return controller.PlayerTransform.position; } }
 }
 
@@ -192,7 +193,13 @@ public class PlayerController : MonoBehaviour
         }
 
         velocity = Vector3.Lerp(velocity, new Vector3(0, velocity.y, 0), dynamicFriction);
-        velocity += movementVector * GetSpeedMultipier() * staticFriction;
+        float speed = GetSpeedMultipier();
+        velocity += movementVector * speed * staticFriction;
+
+        if (isGrounded)
+            CameraController.SetHeadBobVariables(speed, (velocity.magnitude - 5) / 30);
+        else
+            CameraController.SetHeadBobVariables(0.1f, 0);
     }
 
     private float GetSpeedMultipier()
@@ -226,7 +233,7 @@ public class PlayerController : MonoBehaviour
             movement.x++;
         if (Input.GetKey(KeyMapping.MoveLeft))
             movement.x--;
-        return movement;
+        return movement.normalized;
     }
 
     public GroundData GetGroundData()
