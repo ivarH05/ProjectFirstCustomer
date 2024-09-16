@@ -40,8 +40,8 @@ public static class CameraController
 
     public static void SetHeadBobVariables(float Speed, float Modifier)
     {
-        headbobSpeed = Speed;
-        headbobModifier = Modifier * Modifier;
+        headbobSpeed = Mathf.Pow(Speed, 0.55f);
+        headbobModifier = Modifier;
     }
 
     public static void Explode(float Duration, float Strength)
