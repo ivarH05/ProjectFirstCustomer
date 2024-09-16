@@ -197,13 +197,15 @@ public class PlayerController : MonoBehaviour
         velocity += movementVector * speed * staticFriction;
 
         if (isGrounded)
-            CameraController.SetHeadBobVariables(speed, (velocity.magnitude - 5) / 30);
+            CameraController.SetHeadBobVariables(speed * 9f, (velocity.magnitude - 7) / 90);
         else
             CameraController.SetHeadBobVariables(0.1f, 0);
     }
 
     private float GetSpeedMultipier()
     {
+        if (GetMovementInput().magnitude == 0)
+            return crouchSpeed / 2;
         if (!isGrounded)
             return airControll;
         if (isSliding)
