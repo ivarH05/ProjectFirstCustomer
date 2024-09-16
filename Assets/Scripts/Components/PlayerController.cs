@@ -122,6 +122,13 @@ public class PlayerController : MonoBehaviour
                 isCrouching = false;
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+            CameraController.Explode(2.5f, 1);
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+            CameraController.Explode(1.5f, 1);
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+            CameraController.Explode(1f, 1);
     }
 
     private void MoveCamera()
