@@ -916,6 +916,8 @@ MonoBehaviour:
   PlayerMesh: {fileID: 1452757798}
   cam: {fileID: 1823688466}
   audioSource: {fileID: 840011821}
+  FootstepDecal: {fileID: 4925199129824707964, guid: 50c7cbab2ea5f014d959f52658e18c4a,
+    type: 3}
   crouchSpeed: 1.5
   sneakSpeed: 2.25
   walkSpeed: 3.5
@@ -9061,7 +9063,7 @@ MonoBehaviour:
   m_RenderingPathCustomFrameSettings:
     bitDatas:
       data1: 72198262773251917
-      data2: 13763000464465395712
+      data2: 13763000468760363008
     lodBias: 1
     lodBiasMode: 0
     lodBiasQualityLevel: 0
@@ -9075,8 +9077,8 @@ MonoBehaviour:
     materialQuality: 0
   renderingPathCustomFrameSettingsOverrideMask:
     mask:
-      data1: 0
-      data2: 0
+      data1: 4096
+      data2: 4294967296
   defaultFrameSettings: 0
   m_Version: 9
   m_ObsoleteRenderingPath: 0

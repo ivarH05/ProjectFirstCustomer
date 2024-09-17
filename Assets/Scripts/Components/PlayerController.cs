@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public Transform PlayerMesh;
     public Camera cam;
     public AudioSource audioSource;
+    public GameObject FootstepDecal;
 
     [Header("Settings")]
     public float crouchSpeed = 1.5f;
@@ -51,6 +52,9 @@ public class PlayerController : MonoBehaviour
     private float lastSinTime;
     private bool AudioFlipSide = true;
 
+    private GameObject[] footsteps = new GameObject[256];
+    private int footstepIndex;
+
     public class GroundData
     {
         public GameObject Ground;
@@ -67,6 +71,10 @@ public class PlayerController : MonoBehaviour
     {
         Player.controller = this;
         Cursor.lockState = CursorLockMode.Locked;
+        for (int i = 0; i < footsteps.Length; i++)
+        {
+            footsteps[i] = Instantiate(FootstepDecal, Vector3.down, Quaternion.Euler(0, 0, 0));
+        }
     }
 
     // Update is called once per frame
@@ -83,10 +91,10 @@ public class PlayerController : MonoBehaviour
         }
         MoveCamera();
         ManageInputs();
-        ManageSound();
+        ManageFootsteps();
     }
 
-    private void ManageSound()
+    private void ManageFootsteps()
     {
         float sin = CameraController.GetSinusTime();
         float speedMultiplier = GetSpeedMultipier();
@@ -97,9 +105,19 @@ public class PlayerController : MonoBehaviour
             float normalizedSpeed = speedMultiplier / sprintSpeed;
             AudioFlipSide = !AudioFlipSide;
             AudioManager.PlayOneShot("PlayerFootstepGrass", audioSource, normalizedSpeed, normalizedSpeed * 2);
+
+            RaycastHit hit;
+            if(Physics.Raycast(PlayerTransform.position + PlayerTransform.right * (AudioFlipSide ? -0.25f : 0.25f), Vector3.down, out hit, cc.height / 2 + 0.5f))
+            {
+                Transform f = footsteps[footstepIndex].transform;
+                f.position = hit.point;
+                f.rotation = Quaternion.LookRotation(hit.normal);
+                f.eulerAngles = new Vector3(f.eulerAngles.x, cam.transform.eulerAngles.y, f.eulerAngles.z);
+                footstepIndex++;
+                if (footstepIndex >= footsteps.Length)
+                    footstepIndex = 0;
+            }
         }
-
-
         lastSinTime = sin;
     }
 
