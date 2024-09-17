@@ -9,6 +9,9 @@ public static class Player
 
     public static Camera camera { get { return controller.cam; } }
     public static Vector3 Position { get { return controller.PlayerTransform.position; } }
+
+    public static bool HasItem(int id) { return controller.interactscr.HasItem(id); }
+    public static bool UseItem(int id) { return controller.interactscr.UseItem(id); }
 }
 
 public class PlayerController : MonoBehaviour
@@ -55,6 +58,8 @@ public class PlayerController : MonoBehaviour
     private GameObject[] footsteps = new GameObject[256];
     private int footstepIndex;
 
+    [HideInInspector] public InteractSCR interactscr;
+
     public class GroundData
     {
         public GameObject Ground;
@@ -69,11 +74,12 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        interactscr = GetComponent<InteractSCR>();
         Player.controller = this;
         Cursor.lockState = CursorLockMode.Locked;
         for (int i = 0; i < footsteps.Length; i++)
         {
-            footsteps[i] = Instantiate(FootstepDecal, Vector3.down, Quaternion.Euler(0, 0, 0));
+            footsteps[i] = Instantiate(FootstepDecal, Vector3.down, Quaternion.Euler(0, 0, 0), transform);
         }
     }
 
@@ -305,7 +311,7 @@ public class PlayerController : MonoBehaviour
         {
             Vector3 offset = offsets[i] + cc.center;
             RaycastHit hit;
-            if (!Physics.Raycast(PlayerTransform.position + offset, Vector3.down, out hit, height))
+            if (!Physics.Raycast(PlayerTransform.position + offset, Vector3.down, out hit, height, ~(1 << 7)))
             {
                 Debug.DrawRay(PlayerTransform.position + offset, Vector3.down, Color.red);
                 continue;
