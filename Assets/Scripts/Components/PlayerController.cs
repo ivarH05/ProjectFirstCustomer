@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     public CharacterController cc;
     public Transform PlayerMesh;
     public Camera cam;
+    public AudioSource audioSource;
 
     [Header("Settings")]
     public float crouchSpeed = 1.5f;
@@ -46,6 +47,9 @@ public class PlayerController : MonoBehaviour
 
     private float shiftTimer;
     private float controllTimer;
+
+    private float lastSinTime;
+    private bool AudioFlipSide = true;
 
     public class GroundData
     {
@@ -79,6 +83,24 @@ public class PlayerController : MonoBehaviour
         }
         MoveCamera();
         ManageInputs();
+        ManageSound();
+    }
+
+    private void ManageSound()
+    {
+        float sin = CameraController.GetSinusTime();
+        float speedMultiplier = GetSpeedMultipier();
+        if (speedMultiplier < crouchSpeed)
+            return;
+        if ((AudioFlipSide && sin < lastSinTime) || (!AudioFlipSide && sin > lastSinTime))
+        {
+            float normalizedSpeed = speedMultiplier / sprintSpeed;
+            AudioFlipSide = !AudioFlipSide;
+            AudioManager.PlayOneShot("PlayerFootstepGrass", audioSource, normalizedSpeed, normalizedSpeed * 2);
+        }
+
+
+        lastSinTime = sin;
     }
 
     private void ManageInputs()
@@ -122,6 +144,13 @@ public class PlayerController : MonoBehaviour
                 isCrouching = false;
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+            CameraController.Explode(2.5f, 1);
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+            CameraController.Explode(1.5f, 1);
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+            CameraController.Explode(1f, 1);
     }
 
     private void MoveCamera()

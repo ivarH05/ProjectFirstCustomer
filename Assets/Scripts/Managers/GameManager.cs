@@ -5,12 +5,14 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public AnimationCurve dropOffFactor;
-    private void Start()
+    public void Start()
     {
         CameraController.Initialize(Player.camera.transform, dropOffFactor);
+        AudioManager.Initialize();
     }
     private void Update()
     {
         CameraController.update();
+        AnimalManager.Update();
     }
 }
