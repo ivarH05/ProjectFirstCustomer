@@ -25,4 +25,10 @@ public static class AnimalManager
             index = 0;
         animals[index].UpdateBehaviour();
     }
+
+    public static void PlaySound(Vector3 position, float volume)
+    {
+        foreach (AnimalBehaviour animal in animals)
+            animal.PlaySound(position, volume);
+    }
 }
