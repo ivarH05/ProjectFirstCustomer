@@ -3178,12 +3178,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerController
       objectReference: {fileID: 0}
-    - target: {fileID: 3824952038693632556, guid: 9a1eb5b75534e334f91b7845a99ccf57,
-        type: 3}
-      propertyPath: FootstepDecal
-      value: 
-      objectReference: {fileID: 4925199129824707964, guid: 50c7cbab2ea5f014d959f52658e18c4a,
-        type: 3}
     - target: {fileID: 7901687776482628727, guid: 9a1eb5b75534e334f91b7845a99ccf57,
         type: 3}
       propertyPath: m_LocalPosition.x

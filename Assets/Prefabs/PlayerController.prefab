@@ -211,6 +211,8 @@ MonoBehaviour:
   PlayerMesh: {fileID: 1666595978762299361}
   cam: {fileID: 2550167721790514079}
   audioSource: {fileID: 8301456127984267291}
+  FootstepDecal: {fileID: 4925199129824707964, guid: 50c7cbab2ea5f014d959f52658e18c4a,
+    type: 3}
   crouchSpeed: 1.5
   sneakSpeed: 2.25
   walkSpeed: 3.5
