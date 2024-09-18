@@ -86,7 +86,7 @@ public class FlowerField : MonoBehaviour
             {
                 Vector3 pos = positions[index];
                 float dist = Vector3.Distance(playerPos, pos);
-                const float effectDistance = 0.5f;
+                const float effectDistance = 0.75f;
                 if (dist > effectDistance)
                     goto end;
 

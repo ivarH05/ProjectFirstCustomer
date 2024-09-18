@@ -40,16 +40,16 @@ public class Placement : Interactable
 
         if (!Player.UseItem(itemID))
             return;
-        obj = Instantiate(itemPrefab);
+        obj = Instantiate(itemPrefab, transform);
 
         obj.transform.position = Player.camera.transform.position - Player.camera.transform.up * 0.1f;
         targetLocation = transform.position + positionOffset;
 
         obj.transform.eulerAngles = transform.eulerAngles + rotationOffset;
 
-        obj.transform.localScale = new Vector3(0, 0, 0);
-        targetScale = new Vector3(transform.localScale.x * scaleOffset.x, transform.localScale.y * scaleOffset.y, transform.localScale.z * scaleOffset.z);
+        targetScale = new Vector3(obj.transform.localScale.x * scaleOffset.x, obj.transform.localScale.y * scaleOffset.y, obj.transform.localScale.z * scaleOffset.z);
 
+        obj.transform.localScale = new Vector3(0, 0, 0);
         isPlaced = true;
     }
 }
