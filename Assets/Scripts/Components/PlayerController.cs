@@ -9,9 +9,21 @@ public static class Player
 
     public static Camera camera { get { return controller.cam; } }
     public static Vector3 Position { get { return controller.PlayerTransform.position; } }
+    public static Vector3 FootPosition 
+    {
+        get 
+        {
+            Vector3 pos = controller.PlayerTransform.position;
+            float yoffset = controller.cc.height / 2 - controller.cc.center.y;
+            return new Vector3(pos.x, pos.y - yoffset, pos.z); 
+        } 
+    }
 
     public static bool HasItem(int id) { return controller.interactscr.HasItem(id); }
     public static bool UseItem(int id) { return controller.interactscr.UseItem(id); }
+
+    public static void PickupItem(int id, GameObject go) { controller.interactscr.PickupItem(go, id); }
+    public static void GiveItem(int id) { controller.interactscr.GiveItem(id); }
 }
 
 public class PlayerController : MonoBehaviour
@@ -146,7 +158,6 @@ public class PlayerController : MonoBehaviour
             else
                 isSneakning = !isSneakning;
         }
-
 
         controllTimer += Time.unscaledDeltaTime;
 

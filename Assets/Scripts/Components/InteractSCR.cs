@@ -60,8 +60,13 @@ public class InteractSCR : MonoBehaviour
         if (itemObject != null)
             Destroy(itemObject);
         itemObject = GO;
-        inventory.Add(itemIndex);
-        UIManager.AnnounceItem(itemIndex);
+        GiveItem(itemIndex);
+    }
+
+    public void GiveItem(int id)
+    {
+        inventory.Add(id);
+        UIManager.AnnounceItem(id);
     }
 
     private void CheckInteract()
