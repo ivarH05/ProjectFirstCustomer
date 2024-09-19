@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public static class Player
@@ -38,6 +40,7 @@ public class PlayerController : MonoBehaviour
     public Camera cam;
     public AudioSource audioSource;
     public GameObject FootstepDecal;
+    public PhysicMaterial[] materials;
 
     [Header("Settings")]
     public float crouchSpeed = 1.5f;
@@ -68,6 +71,7 @@ public class PlayerController : MonoBehaviour
     private bool AudioFlipSide = true;
 
     private GameObject[] footsteps = new GameObject[256];
+    private GroundData groundData = new GroundData();
     private int footstepIndex;
 
     [HideInInspector] public InteractSCR interactscr;
@@ -122,7 +126,7 @@ public class PlayerController : MonoBehaviour
         {
             float normalizedSpeed = speedMultiplier / sprintSpeed;
             AudioFlipSide = !AudioFlipSide;
-            AudioManager.PlayOneShot("PlayerFootstepGrass", audioSource, normalizedSpeed, normalizedSpeed * 2);
+            AudioManager.PlayOneShot(GetFootstepString(), audioSource, normalizedSpeed, normalizedSpeed * 2);
 
             RaycastHit hit;
             if(Physics.Raycast(PlayerTransform.position + PlayerTransform.right * (AudioFlipSide ? -0.25f : 0.25f), Vector3.down, out hit, cc.height / 2 + 0.5f))
@@ -137,6 +141,30 @@ public class PlayerController : MonoBehaviour
             }
         }
         lastSinTime = sin;
+    }
+
+    private string GetFootstepString()
+    {
+        if(!materials.Contains(groundData.physicsMaterial))
+            return "PlayerFootstepDirt";
+        int index = Array.IndexOf(materials, groundData.physicsMaterial);
+        switch (index)
+        {
+            case 0:
+                return "PlayerFootstepDirt";
+            case 1:
+                return "PlayerFootstepGrass";
+            case 2:
+                return "PlayerFootstepGravel";
+            case 3:
+                return "PlayerFootstepIce";
+            case 4:
+                return "PlayerFootstepRock";
+            case 5:
+                return "PlayerFootstepWood";
+            default:
+                return "PlayerFootstepDirt";
+        }
     }
 
     private void ManageInputs()
@@ -226,6 +254,7 @@ public class PlayerController : MonoBehaviour
             }
             else
                 isSliding = false;
+            groundData = ground;
         }
         else
         {
