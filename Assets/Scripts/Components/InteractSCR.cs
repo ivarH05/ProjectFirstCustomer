@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class InteractSCR : MonoBehaviour
 {
-    [SerializeField] private List<int> inventory = new List<int>();
-    [SerializeField] private List<GameObject> inventoryObjects = new List<GameObject>();
     [Header("Setup")]
     public Animator journal;
     public MeshRenderer journalLeft;
@@ -15,7 +13,8 @@ public class InteractSCR : MonoBehaviour
     public int pageIndex;
 
     [Header("Data")]
-    [SerializeField] private List<int> inventory;
+    [SerializeField] private List<int> inventory = new List<int>();
+    [SerializeField] private List<GameObject> inventoryObjects = new List<GameObject>();
     public float maxDistance = 1.5f;
 
 
