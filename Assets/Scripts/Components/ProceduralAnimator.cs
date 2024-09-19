@@ -37,4 +37,10 @@ public class ProceduralAnimator : MonoBehaviour
             transform.rotation = Quaternion.Lerp(transform.rotation, targetQuaternion, Time.deltaTime * 2);
         }
     }
+
+    public void StartRotating()
+    {
+        targetQuaternion = Quaternion.Euler(0, player.cam.transform.eulerAngles.y, 0);
+        rotating = true;
+    }
 }

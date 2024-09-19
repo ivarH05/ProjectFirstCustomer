@@ -5,6 +5,9 @@ using UnityEngine;
 
 public static class CameraController
 {
+    public static bool canMove = true;
+    public static float targetXRotation = 50;
+
     private static AnimationCurve dropOffFactor;
     private static Transform cam;
 
