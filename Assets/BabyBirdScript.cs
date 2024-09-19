@@ -18,8 +18,9 @@ public class BabyBirdScript : ItemSCR
         source.clip = birdPanic;
         source.Play();
     }
-    private void Update()
+    internal override void Update()
     {
+        base.Update();
         if (!pickedUp)
             return;
 
