@@ -14,6 +14,11 @@ public static class KeyMapping
     public static KeyCode Crouch = KeyCode.LeftControl;
 
     public static KeyCode Interact = KeyCode.E;
+    public static KeyCode Journal = KeyCode.J;
+    public static KeyCode Escape = KeyCode.Escape;
+
+    public static KeyCode NextPage = KeyCode.E;
+    public static KeyCode PreviousPage = KeyCode.Q;
 }
 
 public static class UserSettings

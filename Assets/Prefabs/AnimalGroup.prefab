@@ -126,7 +126,7 @@ MonoBehaviour:
   target: {fileID: 4361722743717473362}
   agent: {fileID: 2025650796459467473}
   walkSpeed: 2
-  sprintSpeed: 9
+  sprintSpeed: 14
   hearing: 1
   Alertness: 0
 --- !u!95 &739985688891668794

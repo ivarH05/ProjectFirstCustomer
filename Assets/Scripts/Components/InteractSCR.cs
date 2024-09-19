@@ -6,14 +6,26 @@ public class InteractSCR : MonoBehaviour
 {
     [SerializeField] private List<int> inventory = new List<int>();
     [SerializeField] private List<GameObject> inventoryObjects = new List<GameObject>();
+    [Header("Setup")]
+    public Animator journal;
+    public MeshRenderer journalLeft;
+    public MeshRenderer journalPage;
+    public MeshRenderer journalRight;
+    public Texture2D[] journalPages;
+    public int pageIndex;
+
+    [Header("Data")]
+    [SerializeField] private List<int> inventory;
     public float maxDistance = 1.5f;
 
+
+    private GameObject itemObject;
+
+    Interactable currentHover;
     PlayerController player;
     Camera cam;
 
-    Interactable currentHover;
-
-    private GameObject itemObject;
+    private bool usingJournal;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +41,42 @@ public class InteractSCR : MonoBehaviour
         CheckInteract();
         HandleCurrentItem();
 
+        if (Input.GetKeyDown(KeyMapping.Journal) || (Input.GetKeyDown(KeyMapping.Escape) && usingJournal))
+        {
+            usingJournal = !usingJournal;
+            journal.SetBool("Open", usingJournal);
+            Player.canMove = !usingJournal;
+            CameraController.canMove = !usingJournal;
+            CameraController.targetXRotation = 45;
+            Player.proceduralAnimator.StartRotating();
+        }
+        if (!usingJournal)
+            return;
+        if (Input.GetKeyDown(KeyMapping.NextPage))
+        {
+            int nextIndex = pageIndex + 1;
+            if (nextIndex >= journalPages.Length)
+                nextIndex = 0;
+            journalLeft.materials[0].SetTexture("_BaseColorMap", journalPages[pageIndex]);
+            journalPage.materials[0].SetTexture("_BaseColorMap", journalPages[pageIndex]);
+            journalPage.materials[1].SetTexture("_BaseColorMap", journalPages[nextIndex]);
+            journalRight.materials[0].SetTexture("_BaseColorMap", journalPages[nextIndex]);
+            journal.SetTrigger("NextPage");
+            pageIndex = nextIndex;
+        }
+
+        if (Input.GetKeyDown(KeyMapping.PreviousPage))
+        {
+            int nextIndex = pageIndex - 1;
+            if (nextIndex <= 0)
+                nextIndex = journalPages.Length - 1;
+            journalLeft.materials[0].SetTexture("_BaseColorMap", journalPages[nextIndex]);
+            journalPage.materials[0].SetTexture("_BaseColorMap", journalPages[nextIndex]);
+            journalPage.materials[1].SetTexture("_BaseColorMap", journalPages[pageIndex]);
+            journalRight.materials[0].SetTexture("_BaseColorMap", journalPages[pageIndex]);
+            journal.SetTrigger("PreviousPage");
+            pageIndex = nextIndex;
+        }
     }
 
     private void HandleCurrentItem()
