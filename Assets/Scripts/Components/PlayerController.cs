@@ -24,6 +24,10 @@ public static class Player
 
     public static void PickupItem(int id, GameObject go) { controller.interactscr.PickupItem(go, id); }
     public static void GiveItem(int id) { controller.interactscr.GiveItem(id); }
+
+    public static bool canMove = true;
+
+    public static ProceduralAnimator proceduralAnimator { get { return controller.PlayerMesh.GetComponent<ProceduralAnimator>(); } }
 }
 
 public class PlayerController : MonoBehaviour
@@ -190,27 +194,41 @@ public class PlayerController : MonoBehaviour
 
     private void MoveCamera()
     {
-        Vector3 camInput = GetCameraInput();
-        CameraPan.localEulerAngles += new Vector3(0, camInput.y, 0);
-        float value = camInput.x + CameraTilt.localEulerAngles.x;
-        if(value > 180)
-            CameraTilt.localRotation = Quaternion.Euler(new Vector3(Mathf.Clamp(value, 280, 720), 0, 0));
-        else
-            CameraTilt.localRotation = Quaternion.Euler(new Vector3(Mathf.Clamp(value, -360, 80), 0, 0));
+        if (CameraController.canMove)
+        {
+            Vector3 camInput = GetCameraInput();
+            CameraPan.localEulerAngles += new Vector3(0, camInput.y, 0);
+            float value = camInput.x + CameraTilt.localEulerAngles.x;
+            if (value > 180)
+                CameraTilt.localRotation = Quaternion.Euler(new Vector3(Mathf.Clamp(value, 280, 720), 0, 0));
+            else
+                CameraTilt.localRotation = Quaternion.Euler(new Vector3(Mathf.Clamp(value, -360, 80), 0, 0));
 
-        float oldheight = cc.height;
-        float newheight = cc.height;
-        if (isCrouching)
-            newheight = Mathf.Lerp(cc.height, 1.2f, timeStep * 10);
+            float oldheight = cc.height;
+            float newheight = cc.height;
+            if (isCrouching)
+                newheight = Mathf.Lerp(cc.height, 1.2f, timeStep * 10);
+            else
+                newheight = Mathf.Lerp(cc.height, 1.8f, timeStep * 10);
+            cc.Move(new Vector3(0, newheight - oldheight, 0));
+            cc.height = newheight;
+            cc.center = new Vector3(0, 0.6f - cc.height / 3, 0);
+        }
         else
-            newheight = Mathf.Lerp(cc.height, 1.8f, timeStep * 10);
-        cc.Move(new Vector3(0, newheight - oldheight, 0));
-        cc.height = newheight;
-        cc.center = new Vector3(0, 0.6f - cc.height / 3, 0);
+        {
+            CameraTilt.localRotation = Quaternion.Lerp(CameraTilt.localRotation, Quaternion.Euler(CameraController.targetXRotation, 0, 0), Time.deltaTime * 10);
+
+            float oldheight = cc.height;
+            float newheight = Mathf.Lerp(cc.height, 1.8f, timeStep * 10);
+            cc.Move(new Vector3(0, newheight - oldheight, 0));
+            cc.height = newheight;
+            cc.center = new Vector3(0, 0.6f - cc.height / 3, 0);
+        }
     }
 
     private void MoveCharacter()
     {
+
         GroundData ground = GetGroundData();
         isGrounded = ground != null && ground.distance < cc.height / 2 + 0.1f || cc.isGrounded;
         if(ground != null)
@@ -290,6 +308,8 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 GetMovementInput()
     {
+        if (Player.canMove == false)
+            return Vector3.zero;
         Vector2 movement = new Vector2();
         if (Input.GetKey(KeyMapping.MoveForward))
             movement.y++;

@@ -69,7 +69,6 @@ public class FlowerField : MonoBehaviour
     void Update()
     {
         Graphics.DrawMeshInstanced(mesh, 0, material, matricies);
-
         Vector3 playerPos = Player.FootPosition;
         float playerDist = Vector3.Distance(transform.position, playerPos);
         if (playerDist > size.x * offset.x && playerDist > size.y * offset.y)
@@ -86,7 +85,7 @@ public class FlowerField : MonoBehaviour
             {
                 Vector3 pos = positions[index];
                 float dist = Vector3.Distance(playerPos, pos);
-                const float effectDistance = 0.5f;
+                const float effectDistance = 01f;
                 if (dist > effectDistance)
                     goto end;
 
