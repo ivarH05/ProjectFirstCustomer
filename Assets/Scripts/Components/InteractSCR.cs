@@ -43,13 +43,30 @@ public class InteractSCR : MonoBehaviour
 
     }
 
+    public bool HasItem(int id)
+    {
+        return inventory.Contains(id);
+    }
+    public bool UseItem(int id)
+    {
+        if(!inventory.Contains(id)) 
+            return false;
+        inventory.Remove(id);
+        return true;
+    }
+
     public void PickupItem(GameObject GO, int itemIndex)
     {
         if (itemObject != null)
             Destroy(itemObject);
         itemObject = GO;
-        inventory.Add(itemIndex);
-        UIManager.AnnounceItem(itemIndex);
+        GiveItem(itemIndex);
+    }
+
+    public void GiveItem(int id)
+    {
+        inventory.Add(id);
+        UIManager.AnnounceItem(id);
     }
 
     private void CheckInteract()
