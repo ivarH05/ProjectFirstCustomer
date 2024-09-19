@@ -69,7 +69,6 @@ public class FlowerField : MonoBehaviour
     void Update()
     {
         Graphics.DrawMeshInstanced(mesh, 0, material, matricies);
-
         Vector3 playerPos = Player.FootPosition;
         float playerDist = Vector3.Distance(transform.position, playerPos);
         if (playerDist > size.x * offset.x && playerDist > size.y * offset.y)
@@ -86,12 +85,12 @@ public class FlowerField : MonoBehaviour
             {
                 Vector3 pos = positions[index];
                 float dist = Vector3.Distance(playerPos, pos);
-                const float effectDistance = 0.75f;
+                const float effectDistance = 0.5f;
                 if (dist > effectDistance)
                     goto end;
 
-                float newScale = Mathf.Clamp(dist / effectDistance, 0.05f, 1) * scale.y;
-                if (newScale > scales[index].y)
+                float newScale = Mathf.Clamp(dist / effectDistance, 0.01f, 1) * scales[index].y;
+                if (newScale > matricies[index].GetS().y)
                     goto end;
                 matricies[index].SetTRS
                 (
@@ -104,7 +103,6 @@ public class FlowerField : MonoBehaviour
                         scales[index].z
                     )
                 );
-                scales[index].y = newScale;
                 done[index] = true;
 
                 end:
