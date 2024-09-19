@@ -24,7 +24,7 @@ public static class Player
     public static bool HasItem(int id) { return controller.interactscr.HasItem(id); }
     public static bool UseItem(int id) { return controller.interactscr.UseItem(id); }
 
-    public static void PickupItem(int id, GameObject go) { controller.interactscr.PickupItem(go, id); }
+    public static void PickupItem(int id, GameObject go) { controller.interactscr.PickupItem(id, go); }
     public static void GiveItem(int id) { controller.interactscr.GiveItem(id); }
 }
 
@@ -145,9 +145,20 @@ public class PlayerController : MonoBehaviour
 
     private string GetFootstepString()
     {
-        if(!materials.Contains(groundData.physicsMaterial))
-            return "PlayerFootstepDirt";
-        int index = Array.IndexOf(materials, groundData.physicsMaterial);
+        PhysicMaterial mat = groundData.physicsMaterial;
+        int index = -1;
+        for (int i = 0; i < materials.Length; i++)
+        {
+            PhysicMaterial pm = materials[i];
+            if (mat.bounciness == pm.bounciness && mat.dynamicFriction == pm.dynamicFriction && mat.staticFriction == pm.staticFriction)
+            {
+                index = i;
+                break;
+            }
+        }
+        if (index < 0)
+            return "PlayerFootstepGrass";
+
         switch (index)
         {
             case 0:
@@ -163,7 +174,7 @@ public class PlayerController : MonoBehaviour
             case 5:
                 return "PlayerFootstepWood";
             default:
-                return "PlayerFootstepDirt";
+                return "PlayerFootstepGrass";
         }
     }
 

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class InteractSCR : MonoBehaviour
 {
-    [SerializeField] private List<int> inventory;
+    [SerializeField] private List<int> inventory = new List<int>();
+    [SerializeField] private List<GameObject> inventoryObjects = new List<GameObject>();
     public float maxDistance = 1.5f;
 
     PlayerController player;
@@ -34,13 +35,14 @@ public class InteractSCR : MonoBehaviour
     {
         if (itemObject == null)
             return;
-        itemObject.transform.position = Vector3.Lerp(itemObject.transform.position, cam.transform.position - new Vector3(0, 0.1f, 0), Time.deltaTime * 15);
+        Vector3 targetPos = cam.transform.position - cam.transform.up * 0.1f;
+        itemObject.transform.position = Vector3.Lerp(itemObject.transform.position, targetPos, Time.deltaTime * 15);
         itemObject.transform.localScale = Vector3.Lerp(itemObject.transform.localScale, Vector3.zero, Time.deltaTime * 25);
-        if (Vector3.Distance(itemObject.transform.position, player.transform.position) < 0.15f)
+        if (Vector3.Distance(itemObject.transform.position, targetPos) < 0.1f)
         {
-            Destroy(itemObject);
+            itemObject.GetComponent<ItemSCR>().OnCompletedPickup();
+            itemObject = null;
         }
-
     }
 
     public bool HasItem(int id)
@@ -51,22 +53,28 @@ public class InteractSCR : MonoBehaviour
     {
         if(!inventory.Contains(id)) 
             return false;
-        inventory.Remove(id);
+        int index = inventory.IndexOf(id);
+        if(inventoryObjects[index] != null)
+            inventoryObjects[index].GetComponent<ItemSCR>().OnUse();
+        inventory.RemoveAt(index);
+        inventoryObjects.RemoveAt(index);
         return true;
     }
 
-    public void PickupItem(GameObject GO, int itemIndex)
+    public void PickupItem(int itemIndex, GameObject GO)
     {
         if (itemObject != null)
-            Destroy(itemObject);
+            itemObject.GetComponent<ItemSCR>().OnCompletedPickup();
         itemObject = GO;
-        GiveItem(itemIndex);
+        itemObject.GetComponent<ItemSCR>().OnPickup();
+        GiveItem(itemIndex, GO);
     }
 
-    public void GiveItem(int id)
+    public void GiveItem(int id, GameObject GO = null)
     {
         inventory.Add(id);
         UIManager.AnnounceItem(id);
+        inventoryObjects.Add(GO);
     }
 
     private void CheckInteract()

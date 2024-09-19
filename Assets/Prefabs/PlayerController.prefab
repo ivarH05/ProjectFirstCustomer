@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 732788961141949662}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 135.53, y: 4.44, z: -381.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -118,7 +118,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -213,6 +213,13 @@ MonoBehaviour:
   audioSource: {fileID: 8301456127984267291}
   FootstepDecal: {fileID: 4925199129824707964, guid: 50c7cbab2ea5f014d959f52658e18c4a,
     type: 3}
+  materials:
+  - {fileID: 13400000, guid: 7c75053af726d01498bda3115f45fd94, type: 2}
+  - {fileID: 13400000, guid: cdededa343ca5104e91dd367171186e0, type: 2}
+  - {fileID: 13400000, guid: 57fb0a67a5318f64a87dea3fe77be70f, type: 2}
+  - {fileID: 13400000, guid: 242c48c35783ba64295484a072d2d895, type: 2}
+  - {fileID: 13400000, guid: 346e807823d83754d8cb824f35b34ef1, type: 2}
+  - {fileID: 13400000, guid: ea782fa65bf646b40816a3fca548980c, type: 2}
   crouchSpeed: 1.5
   sneakSpeed: 2.25
   walkSpeed: 3.5
@@ -226,6 +233,7 @@ MonoBehaviour:
   isSneakning: 0
   isSprinting: 0
   velocity: {x: 0, y: 0, z: 0}
+  interactscr: {fileID: 0}
 --- !u!114 &3729710148835464509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1207,7 +1215,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 30
+      scalar: 25
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -1260,7 +1268,7 @@ ParticleSystem:
     rateOverDistance:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 15
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -1846,7 +1854,7 @@ ParticleSystem:
     flipU: 0
     flipV: 0
   VelocityModule:
-    enabled: 0
+    enabled: 1
     x:
       serializedVersion: 2
       minMaxState: 0
@@ -2168,7 +2176,7 @@ ParticleSystem:
     orbitalOffsetX:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 0.2
       minScalar: 0
       maxCurve:
         serializedVersion: 2

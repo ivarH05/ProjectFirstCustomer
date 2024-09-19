@@ -7,8 +7,23 @@ public class ItemSCR : Interactable
     public int itemIndex;
     public override void Interact()
     {
-        Player.interact.PickupItem(gameObject, itemIndex);
+        Player.interact.PickupItem(itemIndex, gameObject);
         SetOutline(0);
         DisableCollision();
+    }
+
+    public virtual void OnPickup()
+    {
+
+    }
+
+    public virtual void OnCompletedPickup()
+    {
+        Destroy(gameObject);
+    }
+
+    public virtual void OnUse()
+    {
+
     }
 }
