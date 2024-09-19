@@ -1,15 +1,17 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    private const float glowDistance = 4;
+    private const float glowDistance = 10;
     private bool outline = false;
 
     private bool hovering = false;
+    public float outlineMultiplier = 1f;
 
-    void Update()
+    virtual internal void Update()
     {
         if ((transform.position - Player.Position).magnitude < glowDistance)
         {
@@ -33,6 +35,9 @@ public class Interactable : MonoBehaviour
     public void SetOutline(float size, float r = 5, float g = 5, float b = 5)
     {
         outline = size > 0;
+        if (!outline)
+            size = -.0001f;
+        size *= outlineMultiplier;
 
         List<MeshRenderer> meshes = GetComponentsInChildren<MeshRenderer>().ToList<MeshRenderer>();
         MeshRenderer ownMesh = GetComponent<MeshRenderer>();

@@ -15,8 +15,9 @@ public class Placement : Interactable
     bool isPlaced = false;
     GameObject obj;
 
-    private void Update()
+    override internal void Update()
     {
+        base.Update();
         if (obj == null)
             return;
         Vector3 target = Vector3.Lerp(
@@ -40,7 +41,7 @@ public class Placement : Interactable
 
         if (!Player.UseItem(itemID))
             return;
-        obj = Instantiate(itemPrefab, transform);
+        obj = Instantiate(itemPrefab);
 
         obj.transform.position = Player.camera.transform.position - Player.camera.transform.up * 0.1f;
         targetLocation = transform.position + positionOffset;
