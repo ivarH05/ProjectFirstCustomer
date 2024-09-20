@@ -89,8 +89,8 @@ public class FlowerField : MonoBehaviour
                 if (dist > effectDistance)
                     goto end;
 
-                float newScale = Mathf.Clamp(dist / effectDistance, 0.01f, 1) * scales[index].y;
-                if (newScale > matricies[index].GetS().y)
+                float newScale = Mathf.Clamp(dist / effectDistance, 0.01f, 1) * scale.y;
+                if (newScale > scales[index].y)
                     goto end;
                 matricies[index].SetTRS
                 (
@@ -103,6 +103,7 @@ public class FlowerField : MonoBehaviour
                         scales[index].z
                     )
                 );
+                scales[index].y = newScale;
                 done[index] = true;
 
                 end:
