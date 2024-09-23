@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class FlowerField : MonoBehaviour
 {
+    [Header("Setup")]
+    public Terrain terrain;
+
     [Header("Settings")]
     public Mesh mesh;
     [Tooltip("Make sure the material has GPU instancing enabled at the bottom")]
@@ -44,7 +47,8 @@ public class FlowerField : MonoBehaviour
             for (int x = 0; x < size.x; x++)
             {
                 int index = y * size.x + x;
-                Vector3 pos = basePos + new Vector3(offset.x * (x - size.x / 2), offset.y * x, offset.z * (y - size.y / 2)) + RandomXZVector(-positionRandomization, positionRandomization);
+                Vector3 pos = basePos + new Vector3(offset.x * (x - size.x / 2), 0, offset.z * (y - size.y / 2)) + RandomXZVector(-positionRandomization, positionRandomization);
+                pos.y = terrain.SampleHeight(pos) + terrain.transform.position.y;
                 Vector3 rot = baseRot + RandomXZVector(-randomization * 360, randomization * 360);
                 rot.y = Random.Range(-360, 360);
                 Vector3 sca = baseSca + RandomXZVector(-randomization, randomization);
