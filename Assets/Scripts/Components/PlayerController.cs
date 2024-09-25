@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public static class Player
@@ -9,14 +11,14 @@ public static class Player
 
     public static Camera camera { get { return controller.cam; } }
     public static Vector3 Position { get { return controller.PlayerTransform.position; } }
-    public static Vector3 FootPosition 
+    public static Vector3 FootPosition
     {
-        get 
+        get
         {
             Vector3 pos = controller.PlayerTransform.position;
             float yoffset = controller.cc.height / 2 - controller.cc.center.y;
-            return new Vector3(pos.x, pos.y - yoffset, pos.z); 
-        } 
+            return new Vector3(pos.x, pos.y - yoffset, pos.z);
+        }
     }
 
     public static bool HasItem(int id) { return controller.interactscr.HasItem(id); }
@@ -42,6 +44,7 @@ public class PlayerController : MonoBehaviour
     public Camera cam;
     public AudioSource audioSource;
     public GameObject FootstepDecal;
+    public PhysicMaterial[] materials;
 
     [Header("Settings")]
     public float crouchSpeed = 1.5f;
@@ -72,6 +75,7 @@ public class PlayerController : MonoBehaviour
     private bool AudioFlipSide = true;
 
     private GameObject[] footsteps = new GameObject[256];
+    private GroundData groundData = new GroundData();
     private int footstepIndex;
 
     [HideInInspector] public InteractSCR interactscr;
@@ -126,10 +130,10 @@ public class PlayerController : MonoBehaviour
         {
             float normalizedSpeed = speedMultiplier / sprintSpeed;
             AudioFlipSide = !AudioFlipSide;
-            AudioManager.PlayOneShot("PlayerFootstepGrass", audioSource, normalizedSpeed, normalizedSpeed * 2);
+            AudioManager.PlayOneShot(GetFootstepString(), audioSource, Mathf.Sqrt(normalizedSpeed) * 0.65f, normalizedSpeed * 2);
 
             RaycastHit hit;
-            if(Physics.Raycast(PlayerTransform.position + PlayerTransform.right * (AudioFlipSide ? -0.25f : 0.25f), Vector3.down, out hit, cc.height / 2 + 0.5f))
+            if (Physics.Raycast(PlayerTransform.position + PlayerTransform.right * (AudioFlipSide ? -0.25f : 0.25f), Vector3.down, out hit, cc.height / 2 + 0.5f))
             {
                 Transform f = footsteps[footstepIndex].transform;
                 f.position = hit.point;
@@ -141,6 +145,41 @@ public class PlayerController : MonoBehaviour
             }
         }
         lastSinTime = sin;
+    }
+
+    private string GetFootstepString()
+    {
+        PhysicMaterial mat = groundData.physicsMaterial;
+        int index = -1;
+        for (int i = 0; i < materials.Length; i++)
+        {
+            PhysicMaterial pm = materials[i];
+            if (mat.bounciness == pm.bounciness && mat.dynamicFriction == pm.dynamicFriction && mat.staticFriction == pm.staticFriction)
+            {
+                index = i;
+                break;
+            }
+        }
+        if (index < 0)
+            return "PlayerFootstepGrass";
+
+        switch (index)
+        {
+            case 0:
+                return "PlayerFootstepDirt";
+            case 1:
+                return "PlayerFootstepGrass";
+            case 2:
+                return "PlayerFootstepGravel";
+            case 3:
+                return "PlayerFootstepIce";
+            case 4:
+                return "PlayerFootstepRock";
+            case 5:
+                return "PlayerFootstepWood";
+            default:
+                return "PlayerFootstepGrass";
+        }
     }
 
     private void ManageInputs()
@@ -231,12 +270,12 @@ public class PlayerController : MonoBehaviour
 
         GroundData ground = GetGroundData();
         isGrounded = ground != null && ground.distance < cc.height / 2 + 0.1f || cc.isGrounded;
-        if(ground != null)
+        if (ground != null)
         {
             float slidethreshold = 0.5f;
             if (ground.physicsMaterial != null)
                 slidethreshold = ground.physicsMaterial.staticFriction;
-            if(ground.angle < slidethreshold)
+            if (ground.angle < slidethreshold)
             {
                 velocity += ground.normal * timeStep * Mathf.Clamp(3 / ground.distance, 1, 10);
                 isSliding = true;
@@ -244,6 +283,7 @@ public class PlayerController : MonoBehaviour
             }
             else
                 isSliding = false;
+            groundData = ground;
         }
         else
         {

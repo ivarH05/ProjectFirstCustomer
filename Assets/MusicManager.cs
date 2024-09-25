@@ -6,6 +6,8 @@ using UnityEngine;
 [System.Serializable]
 public class MusicMix
 {
+    [Range(0f, 10f)]
+    public float Main;
     [Range(0f, 2f)]
     public float Flute = 1;
     [Range(0f, 2f)]
@@ -39,27 +41,31 @@ public class MusicMix
 
 public class MusicManager : MonoBehaviour
 {
+    private static MusicManager singleton;
     public AudioClip[] instruments;
 
     public MusicMix standard;
 
     public MusicMix[] mixes;
-    public bool[] activity;
+    //public bool[] activity;
     private AudioSource[] sources;
+    public int activeMix;
 
     // Start is called before the first frame update
     void Start()
     {
-        activity = new bool[instruments.Length];
+        singleton = this;
+        //activity = new bool[instruments.Length];
         sources = new AudioSource[instruments.Length];
         for (int i = 0; i < instruments.Length; i++)
         {
             AudioSource s = transform.AddComponent<AudioSource>();
             s.clip = instruments[i];
-            s.volume = standard.GetVolumeByIndex(i);
+            s.volume = 0;
             s.loop = true;
             s.priority = 1;
             s.Play();
+            s.dopplerLevel = 0;
             sources[i] = s;
         }
     }
@@ -70,14 +76,15 @@ public class MusicManager : MonoBehaviour
         for (int i = 0; i < instruments.Length; i++)
         {
             float volume = 1;
-            volume *= standard.GetVolumeByIndex(i);
-            for (int j = 0; j < mixes.Length; j++)
-            {
-                if (activity[j] == false)
-                    continue;
-                volume *= mixes[j].GetVolumeByIndex(i);
-            }
+            volume *= standard.GetVolumeByIndex(i) * standard.Main;
+            if(activeMix >= 0)
+                volume *= mixes[activeMix].GetVolumeByIndex(i) * mixes[activeMix].Main;
             sources[i].volume = Mathf.Lerp(sources[i].volume, volume, Time.deltaTime);
         }
+    }
+
+    public static void SwitchActive(int nextActive)
+    {
+        singleton.activeMix = nextActive;
     }
 }

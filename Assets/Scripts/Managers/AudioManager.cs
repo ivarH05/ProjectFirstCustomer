@@ -10,12 +10,59 @@ public static class AudioManager
         dict = new Dictionary<string, AudioClip[]>()
         {
             {
+                "PlayerFootstepDirt",
+                new AudioClip[]
+                {
+                    (AudioClip)Resources.Load("DirtStep1"),
+                    (AudioClip)Resources.Load("DirtStep2"),
+                    (AudioClip)Resources.Load("DirtStep3")
+                }
+            },
+            {
                 "PlayerFootstepGrass",
                 new AudioClip[]
                 {
-                    (AudioClip)Resources.Load("FootstepGrass1")
-                } 
-            }
+                    (AudioClip)Resources.Load("GrassStep1"),
+                    //(AudioClip)Resources.Load("GrassStep2"),
+                    //(AudioClip)Resources.Load("GrassStep3")
+                }
+            },
+            {
+                "PlayerFootstepGravel",
+                new AudioClip[]
+                {
+                    (AudioClip)Resources.Load("GravelStep1"),
+                    (AudioClip)Resources.Load("GravelStep2"),
+                    (AudioClip)Resources.Load("GravelStep3")
+                }
+            },
+            {
+                "PlayerFootstepIce",
+                new AudioClip[]
+                {
+                    (AudioClip)Resources.Load("IceStep1"),
+                    (AudioClip)Resources.Load("IceStep2"),
+                    (AudioClip)Resources.Load("IceStep3")
+                }
+            },
+            {
+                "PlayerFootstepRock",
+                new AudioClip[]
+                {
+                    (AudioClip)Resources.Load("GravelStep1"),
+                    (AudioClip)Resources.Load("GravelStep2"),
+                    (AudioClip)Resources.Load("GravelStep3")
+                }
+            },
+            {
+                "PlayerFootstepWood",
+                new AudioClip[]
+                {
+                    (AudioClip)Resources.Load("WoodStep1"),
+                    (AudioClip)Resources.Load("WoodStep2"),
+                    (AudioClip)Resources.Load("WoodStep3")
+                }
+            },
         };
     }
 
