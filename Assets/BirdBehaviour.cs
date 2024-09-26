@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class BirdBehaviour : MonoBehaviour
 {
@@ -8,23 +9,45 @@ public class BirdBehaviour : MonoBehaviour
     Rigidbody rb;
     bool flying = true;
     float timer = 1;
+    float height = 2;
     bool grounded;
+    Vector3 targetPosition;
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
+        targetPosition = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(timer < 0)
+        Vector3 subtracted = transform.position - Player.Position;
+        if (subtracted.magnitude < 2)
+        {
+            rb.useGravity = false;
+            subtracted.y = 0;
+            rb.AddForce((subtracted.normalized * 750 + new Vector3(Random.Range(-100, 100), Random.Range(50, 100), Random.Range(-100, 100)).normalized * 350) * Time.deltaTime);
+            timer = Mathf.Pow(Random.Range(0.8f, 1.5f), 2);
+            flying = true;
+        }
+        else if (Vector3.Distance(transform.position, targetPosition) > 25)
+        {
+            rb.useGravity = false;
+            Vector3 targetDirection = targetPosition - transform.position;
+            targetDirection.y *= (height - Random.Range(-1f, 3f));
+            rb.velocity = (targetDirection.normalized * 5);
+            timer = Mathf.Pow(Random.Range(0.4f, 0.75f), 2);
+        }
+        if (timer < 0)
         {
             if(rb.velocity.magnitude < 1)
             {
                 rb.useGravity = false;
-                rb.AddForce(new Vector3(Random.Range(-100, 100), Random.Range(-100, 100), Random.Range(-100, 100)).normalized * 500);
+                Vector3 targetDirection = new Vector3(Random.Range(-2.0f, 2.0f), Random.Range(-2.0f, 2.0f), Random.Range(-2.0f, 2.0f));
+                targetDirection.y *= (height - Random.Range(-1f, 3f));
+                rb.AddForce(targetDirection.normalized * 500);
                 timer = Mathf.Pow(Random.Range(0.4f, 0.75f), 2);
             }
             else
@@ -44,22 +67,27 @@ public class BirdBehaviour : MonoBehaviour
         }
 
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, 0.25f))
+        if (Physics.Raycast(transform.position, Vector3.down, out hit))
         {
-            if (!grounded)
+            height = hit.distance;
+
+            if (height < 0.25f)
             {
-                rb.velocity = Vector3.zero;
-                rb.useGravity = true;
-                timer = Random.Range(3f, 10f);
-                flying = false;
-                grounded = true;
+                if (!grounded)
+                {
+                    rb.velocity = Vector3.zero;
+                    rb.useGravity = true;
+                    timer = Random.Range(3f, 10f);
+                    flying = false;
+                    grounded = true;
+                }
+            }
+            else
+            {
+                grounded = false;
+                flying = true;
             }
 
-        }
-        else
-        {
-            grounded = false;
-            flying = true;
         }
 
         anim.SetInteger("EventTrigger", Random.Range(0, 100));

@@ -23,6 +23,7 @@ public class AnimalBehaviour : MonoBehaviour
     public Animator behaviourTree;
     public Transform target;
     public NavMeshAgent agent;
+    public Animator SimpleAnimator;
 
     [Header("Settings")]
     public float walkSpeed;
@@ -53,6 +54,10 @@ public class AnimalBehaviour : MonoBehaviour
         velocity = (transform.position - lastPos) / Time.deltaTime;
         lastPos = transform.position;
         Alertness = Mathf.Lerp(Alertness, 0, Time.deltaTime / 10);
+
+        if (SimpleAnimator != null)
+            SimpleAnimator.SetFloat("Speed", (agent.isStopped || agent.remainingDistance < 0.5f) ? 0 : velocity.magnitude / sprintSpeed);
+        agent.speed = speed;
 
         UpdateVariables();
     }

@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Placement : Interactable
 {
+    public bool dissableAfter = true;
     public GameObject itemPrefab;
     public int itemID;
     public Vector3 positionOffset;
@@ -12,8 +14,32 @@ public class Placement : Interactable
 
     Vector3 targetLocation;
     Vector3 targetScale;
-    bool isPlaced = false;
+    public bool isPlaced = false;
     GameObject obj;
+    private void Start()
+    {
+        targetLocation = transform.position + positionOffset;
+        targetScale = new Vector3(transform.localScale.x * scaleOffset.x, transform.localScale.y * scaleOffset.y, transform.localScale.z * scaleOffset.z);
+
+        obj = Instantiate(itemPrefab);
+        obj.transform.position = transform.position + positionOffset;
+        obj.transform.eulerAngles = transform.eulerAngles + rotationOffset;
+        obj.transform.localScale = new Vector3(transform.localScale.x * scaleOffset.x, transform.localScale.y * scaleOffset.y, transform.localScale.z * scaleOffset.z);
+
+        List<Renderer> renderers = obj.transform.GetComponentsInChildren<Renderer>().ToList();
+        Material mat = ItemManager.getPreviewMaterial();
+        renderers.Add(obj.GetComponent<Renderer>());
+        for (int i = 0; i < renderers.Count; i++)
+        {
+            renderers[i].SetMaterials(new List<Material> { mat });
+        }
+
+        List<Collider> colliders = obj.transform.GetComponentsInChildren<Collider>().ToList();
+        for (int i = 0; i < colliders.Count; i++)
+        {
+            Destroy(colliders[i]);
+        }
+    }
 
     private void Update()
     {
@@ -40,16 +66,18 @@ public class Placement : Interactable
 
         if (!Player.UseItem(itemID))
             return;
+        Destroy(obj);
+
         obj = Instantiate(itemPrefab);
 
         obj.transform.position = Player.camera.transform.position - Player.camera.transform.up * 0.1f;
-        targetLocation = transform.position + positionOffset;
 
         obj.transform.eulerAngles = transform.eulerAngles + rotationOffset;
 
         obj.transform.localScale = new Vector3(0, 0, 0);
-        targetScale = new Vector3(transform.localScale.x * scaleOffset.x, transform.localScale.y * scaleOffset.y, transform.localScale.z * scaleOffset.z);
 
         isPlaced = true;
+        if(dissableAfter)
+            GetComponent<Collider>().enabled = false;
     }
 }
