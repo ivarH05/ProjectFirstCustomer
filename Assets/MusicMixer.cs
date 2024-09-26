@@ -17,7 +17,8 @@ public class MusicMixer : MonoBehaviour
     {
         if(Vector3.Distance(transform.position, Player.Position) < radius)
         {
-            MusicManager.SwitchActive(mixIndex);
+            if (MusicManager.SwitchActive(mixIndex))
+                GetComponent<AudioSource>().Play();
         }
     }
 }

@@ -9,7 +9,7 @@ public class InteractSCR : MonoBehaviour
     public MeshRenderer journalLeft;
     public MeshRenderer journalPage;
     public MeshRenderer journalRight;
-    public Texture2D[] journalPages;
+    public List<Texture2D> journalPages = new List<Texture2D>();
     public int pageIndex;
 
     [Header("Settings")]
@@ -39,25 +39,21 @@ public class InteractSCR : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckInteract();
-        HandleCurrentItem();
-
         if (Input.GetKeyDown(KeyMapping.Journal) || (Input.GetKeyDown(KeyMapping.Escape) && usingJournal))
         {
-            usingJournal = !usingJournal;
-            journal.SetBool("Open", usingJournal);
-            Player.canMove = !usingJournal;
-            CameraController.canMove = !usingJournal;
-            CameraController.targetXRotation = 45;
-            Player.proceduralAnimator.StartRotating();
+            SetJournalActivity(!usingJournal);
         }
         if (!usingJournal)
+        {
+            CheckInteract();
+            HandleCurrentItem();
             return;
+        }
         if (Input.GetKeyDown(KeyMapping.NextPage))
         {
             int nextIndex = pageIndex + 1;
-            if (nextIndex >= journalPages.Length)
-                nextIndex = 0;
+            if (nextIndex >= journalPages.Count)
+                return;
             journalLeft.materials[0].SetTexture("_BaseColorMap", journalPages[pageIndex]);
             journalPage.materials[0].SetTexture("_BaseColorMap", journalPages[pageIndex]);
             journalPage.materials[1].SetTexture("_BaseColorMap", journalPages[nextIndex]);
@@ -69,8 +65,8 @@ public class InteractSCR : MonoBehaviour
         if (Input.GetKeyDown(KeyMapping.PreviousPage))
         {
             int nextIndex = pageIndex - 1;
-            if (nextIndex <= 0)
-                nextIndex = journalPages.Length - 1;
+            if (nextIndex < 0)
+                return;
             journalLeft.materials[0].SetTexture("_BaseColorMap", journalPages[nextIndex]);
             journalPage.materials[0].SetTexture("_BaseColorMap", journalPages[nextIndex]);
             journalPage.materials[1].SetTexture("_BaseColorMap", journalPages[pageIndex]);
@@ -78,6 +74,21 @@ public class InteractSCR : MonoBehaviour
             journal.SetTrigger("PreviousPage");
             pageIndex = nextIndex;
         }
+    }
+
+    public void SetJournalActivity(bool open)
+    {
+        usingJournal = open;
+        journal.SetBool("Open", usingJournal);
+        Player.canMove = !usingJournal;
+        CameraController.canMove = !usingJournal;
+        CameraController.targetXRotation = 45;
+        Player.proceduralAnimator.StartRotating();
+
+        journalLeft.materials[0].SetTexture("_BaseColorMap", journalPages[pageIndex]);
+        journalPage.materials[0].SetTexture("_BaseColorMap", journalPages[pageIndex]);
+        journalPage.materials[1].SetTexture("_BaseColorMap", journalPages[pageIndex]);
+        journalRight.materials[0].SetTexture("_BaseColorMap", journalPages[pageIndex]);
     }
 
     private void HandleCurrentItem()
@@ -128,7 +139,19 @@ public class InteractSCR : MonoBehaviour
                 return;
             i.OnHoverStay();
             if (Input.GetKeyDown(KeyMapping.Interact))
+            {
                 i.Interact();
+                if (i is Drawable d && !journalPages.Contains(AllPages[d.PageID]))
+                {
+                    pageIndex = journalPages.Count - 1;
+                    journalPages.Insert(journalPages.Count - 1, AllPages[d.PageID]);
+                    SetJournalActivity(true);
+                    journalLeft.materials[0].SetFloat("_StartTime", Time.time);
+                    journalPage.materials[0].SetFloat("_StartTime", Time.time);
+                    journalPage.materials[1].SetFloat("_StartTime", Time.time);
+                    journalRight.materials[0].SetFloat("_StartTime", Time.time);
+                }
+            }
         }
         else
         {
@@ -138,6 +161,8 @@ public class InteractSCR : MonoBehaviour
                 i.StartHover();
         }
         currentHover = i;
+
+
     }
 
     private Interactable GetHoveringInteractable()
@@ -148,7 +173,7 @@ public class InteractSCR : MonoBehaviour
 
 
         Interactable interactable = hit.transform.GetComponent<Interactable>();
-        if(interactable == null)
+        if (interactable == null)
             return hit.transform.GetComponentInParent<Interactable>();
         return interactable;
     }

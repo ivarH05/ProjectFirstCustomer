@@ -130,7 +130,7 @@ public class PlayerController : MonoBehaviour
         {
             float normalizedSpeed = speedMultiplier / sprintSpeed;
             AudioFlipSide = !AudioFlipSide;
-            AudioManager.PlayOneShot(GetFootstepString(), audioSource, Mathf.Sqrt(normalizedSpeed) * 0.65f, normalizedSpeed * 2);
+            AudioManager.PlayOneShot(GetFootstepString(), audioSource, Mathf.Pow(normalizedSpeed, 0.25f) * 0.35f, normalizedSpeed * 2);
 
             RaycastHit hit;
             if (Physics.Raycast(PlayerTransform.position + PlayerTransform.right * (AudioFlipSide ? -0.25f : 0.25f), Vector3.down, out hit, cc.height / 2 + 0.5f))

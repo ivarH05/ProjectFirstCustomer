@@ -8,13 +8,15 @@ public class Interactable : MonoBehaviour
     private bool outline = false;
 
     private bool hovering = false;
+    internal Vector3 closeColor = new Vector3(5f, 5f, 5f);
+    internal Vector3 hoverColor = new Vector3(5f, 1f, 0f);
 
     void Update()
     {
         if ((transform.position - Player.Position).magnitude < glowDistance)
         {
             if (!outline)
-                SetOutline(0.015f);
+                SetOutline(0.015f, closeColor.x, closeColor.y, closeColor.z);
         }else if (outline && !hovering)
             SetOutline(0);
     }
@@ -22,7 +24,7 @@ public class Interactable : MonoBehaviour
     public void StartHover()
     {
         hovering = true;
-        SetOutline(0.02f, 5f, 1f, 0f);
+        SetOutline(0.02f, hoverColor.x, hoverColor.y, hoverColor.z);
     }
     public void StopHover()
     {
