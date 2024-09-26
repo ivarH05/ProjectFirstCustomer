@@ -501,11 +501,13 @@ MonoBehaviour:
   journalPage: {fileID: 3450498668615779040}
   journalRight: {fileID: 4315176237123821335}
   journalPages:
+  - {fileID: 2800000, guid: 504b6f1ed13fd074ead1bd336ac09adb, type: 3}
+  - {fileID: 2800000, guid: 504b6f1ed13fd074ead1bd336ac09adb, type: 3}
+  pageIndex: 0
+  AllPages:
   - {fileID: 2800000, guid: 048ee2602a7cce64a99db7efb2bf48ba, type: 3}
   - {fileID: 2800000, guid: b79f377d2992d2b4dbef2287c1da9877, type: 3}
   - {fileID: 2800000, guid: 0572a1bd424544a41925309fe05c2fc6, type: 3}
-  pageIndex: 0
-  AllPages: []
   inventory: 
   maxDistance: 1.5
 --- !u!1 &1953364579162522635

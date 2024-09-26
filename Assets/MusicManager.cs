@@ -79,12 +79,15 @@ public class MusicManager : MonoBehaviour
             volume *= standard.GetVolumeByIndex(i) * standard.Main;
             if(activeMix >= 0)
                 volume *= mixes[activeMix].GetVolumeByIndex(i) * mixes[activeMix].Main;
-            sources[i].volume = Mathf.Lerp(sources[i].volume, volume, Time.deltaTime);
+            sources[i].volume = Mathf.Lerp(sources[i].volume, volume, Time.deltaTime * 3);
         }
     }
 
-    public static void SwitchActive(int nextActive)
+    public static bool SwitchActive(int nextActive)
     {
+        if(singleton.activeMix ==  nextActive) 
+            return false;
         singleton.activeMix = nextActive;
+        return true;
     }
 }
