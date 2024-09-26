@@ -29,7 +29,7 @@ public class FlowerPathCheckpoint : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, triggerRadius);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (done) return;
 
@@ -39,7 +39,7 @@ public class FlowerPathCheckpoint : MonoBehaviour
         if (!animate)
             return;
 
-        for(int i = startIndex; i < currentIndex; i++)
+        for(int i = startIndex; i < currentIndex && i < matricies.Length; i++)
         {
             Matrix4x4 matrix = matricies[i]; 
             Vector3 position = matrix.GetColumn(3);
@@ -61,7 +61,7 @@ public class FlowerPathCheckpoint : MonoBehaviour
         }
 
         if (currentIndex < matricies.Length)
-            currentIndex++;
+            currentIndex += 3;
         if (startIndex >= matricies.Length)
             done = true;
     }

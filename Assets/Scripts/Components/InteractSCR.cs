@@ -12,6 +12,9 @@ public class InteractSCR : MonoBehaviour
     public Texture2D[] journalPages;
     public int pageIndex;
 
+    [Header("Settings")]
+    public Texture2D[] AllPages;
+
     [Header("Data")]
     [SerializeField] private List<int> inventory;
     public float maxDistance = 1.5f;
