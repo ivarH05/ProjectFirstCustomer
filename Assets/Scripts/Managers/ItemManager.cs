@@ -7,6 +7,7 @@ using UnityEngine;
 public class ItemManager : MonoBehaviour
 {
     private static ItemManager singleton;
+    public Material previewMaterial;
     public Item[] items;
 
     private void Start()
@@ -28,4 +29,6 @@ public class ItemManager : MonoBehaviour
     { 
         return singleton.items[index]; 
     }
+
+    public static Material getPreviewMaterial() { return singleton.previewMaterial; }
 }
