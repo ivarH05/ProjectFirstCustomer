@@ -18,4 +18,9 @@ public class UIManager : MonoBehaviour
         ItemAnnouncer ia = singleton.itemAnnouncer;
         ia.animate(ItemManager.GetItem(itemIndex).name);
     }
+    public static void AnnounceText(string str)
+    {
+        ItemAnnouncer ia = singleton.itemAnnouncer;
+        ia.animate(str);
+    }
 }

@@ -27,6 +27,7 @@ public class InteractSCR : MonoBehaviour
     Camera cam;
 
     private bool usingJournal;
+    private bool openedBefore = false;
 
     // Start is called before the first frame update
     void Start()
@@ -48,7 +49,13 @@ public class InteractSCR : MonoBehaviour
             CheckInteract();
             HandleCurrentItem();
             return;
+        }else if (!openedBefore)
+        {
+            openedBefore = true;
+            UIManager.AnnounceText("Use [Q] and [E] to cycle pages");
         }
+
+
         if (Input.GetKeyDown(KeyMapping.NextPage))
         {
             int nextIndex = pageIndex + 1;
