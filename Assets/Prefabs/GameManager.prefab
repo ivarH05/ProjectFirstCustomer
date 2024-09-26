@@ -151,7 +151,7 @@ MonoBehaviour:
     Harp: 1
     Gong: 1
     Synth: 2
-  activity: 0000000001
+  activeMix: -1
 --- !u!1 &8881249170698943796
 GameObject:
   m_ObjectHideFlags: 0
