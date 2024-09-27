@@ -7,6 +7,7 @@ public class FlowerPathCheckpoint : MonoBehaviour
 {
     public float triggerRadius = 5;
     public float pathWidthMultiplier = 2;
+    public float stepSize = 0.15f;
     [HideInInspector]public Vector3 offset;
     [HideInInspector] public Vector3 rotation;
     [HideInInspector] public Vector3 scale;
@@ -89,7 +90,7 @@ public class FlowerPathCheckpoint : MonoBehaviour
     {
         Vector3 right = Vector3.Cross(start - end, Vector3.up).normalized * pathWidthMultiplier;
 
-        float step = 0.15f / Vector3.Distance(start, end);
+        float step = stepSize / Vector3.Distance(start, end);
         if (step < 0.001f)
             step = 0.001f;
         for(float time = 0; time < 1; time += step)
@@ -99,8 +100,10 @@ public class FlowerPathCheckpoint : MonoBehaviour
                 pos += right;
             else
                 pos -= right;
-
-            pos.y = terrain.SampleHeight(pos) + terrain.transform.position.y;
+            if(terrain ==  null)
+                pos.y = transform.position.y;
+            else
+                pos.y = terrain.SampleHeight(pos) + terrain.transform.position.y;
             pos += offset;
             Vector3 euler = RandomXZVector(-variation, variation) * 360 + rotation;
             euler.y = Random.Range(-360, 360);
