@@ -29047,6 +29047,12 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 41.79316
   m_Center: {x: 1.8173447, y: -1.0199356, z: -2.0036526}
+--- !u!1 &1421551978 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4876091150611988305, guid: e6361a69d44207a4081ee98b4ba04f2e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1622991125}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1422484610 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7646260920767167318, guid: 536398bee9ed66f4aa559ac5bf814ccc,
@@ -30054,7 +30060,7 @@ Terrain:
   m_TreeCrossFadeLength: 5
   m_TreeMaximumFullLODCount: 50
   m_DetailObjectDistance: 80
-  m_DetailObjectDensity: 1
+  m_DetailObjectDensity: 0.5
   m_HeightmapPixelError: 5
   m_SplatMapDistance: 1000
   m_HeightmapMinimumLODSimplification: 0
@@ -34815,6 +34821,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FireFoxes
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876091150611988305, guid: e6361a69d44207a4081ee98b4ba04f2e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8984064868935003250, guid: e6361a69d44207a4081ee98b4ba04f2e,
         type: 3}
@@ -46829,7 +46840,7 @@ PrefabInstance:
     - target: {fileID: 2501299079092189373, guid: 3c5a8e1338233214e999074dd79724b1,
         type: 3}
       propertyPath: EnableAtNight.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2501299079092189373, guid: 3c5a8e1338233214e999074dd79724b1,
         type: 3}
@@ -46850,7 +46861,7 @@ PrefabInstance:
         type: 3}
       propertyPath: EnableAtNight.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1421551978}
     - target: {fileID: 2501299079092189373, guid: 3c5a8e1338233214e999074dd79724b1,
         type: 3}
       propertyPath: DisableAtNight.Array.data[0]
