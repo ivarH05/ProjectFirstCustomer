@@ -83,6 +83,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrassFlower1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2e90abe30c16f23488a0cae6408cd84a,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
