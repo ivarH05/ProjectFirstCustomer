@@ -94,7 +94,7 @@ public class FlowerField : MonoBehaviour
                     goto end;
 
                 float newScale = Mathf.Clamp(dist / effectDistance, 0.01f, 1) * scales[index].y;
-                if (newScale > matricies[index].GetS().y)
+                if (newScale > matricies[index].GetColumn(1).magnitude)
                     goto end;
                 matricies[index].SetTRS
                 (
