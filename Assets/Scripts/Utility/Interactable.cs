@@ -6,6 +6,7 @@ public class Interactable : MonoBehaviour
 {
     private const float glowDistance = 4;
     private bool outline = false;
+    public float outlineMultiplier = 1;
 
     private bool hovering = false;
     internal Vector3 closeColor = new Vector3(5f, 5f, 5f);
@@ -34,6 +35,7 @@ public class Interactable : MonoBehaviour
 
     public void SetOutline(float size, float r = 5, float g = 5, float b = 5)
     {
+        size *= outlineMultiplier;
         outline = size > 0;
 
         List<MeshRenderer> meshes = GetComponentsInChildren<MeshRenderer>().ToList<MeshRenderer>();
