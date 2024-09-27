@@ -1,0 +1,119 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2710781253846435073
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 7d325a16f0148ae4ebcf0e8c3aa64404,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7d325a16f0148ae4ebcf0e8c3aa64404,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7d325a16f0148ae4ebcf0e8c3aa64404,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7d325a16f0148ae4ebcf0e8c3aa64404,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -22.080639
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7d325a16f0148ae4ebcf0e8c3aa64404,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.905
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7d325a16f0148ae4ebcf0e8c3aa64404,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -29.250837
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7d325a16f0148ae4ebcf0e8c3aa64404,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7d325a16f0148ae4ebcf0e8c3aa64404,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7d325a16f0148ae4ebcf0e8c3aa64404,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7d325a16f0148ae4ebcf0e8c3aa64404,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7d325a16f0148ae4ebcf0e8c3aa64404,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7d325a16f0148ae4ebcf0e8c3aa64404,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7d325a16f0148ae4ebcf0e8c3aa64404,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 7d325a16f0148ae4ebcf0e8c3aa64404,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 431fc8f94934b884589d4079864d50fe, type: 2}
+    - target: {fileID: 919132149155446097, guid: 7d325a16f0148ae4ebcf0e8c3aa64404,
+        type: 3}
+      propertyPath: m_Name
+      value: BirdNest
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7d325a16f0148ae4ebcf0e8c3aa64404,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8305569944160584583}
+  m_SourcePrefab: {fileID: 100100000, guid: 7d325a16f0148ae4ebcf0e8c3aa64404, type: 3}
+--- !u!1 &2981322350378825808 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7d325a16f0148ae4ebcf0e8c3aa64404,
+    type: 3}
+  m_PrefabInstance: {fileID: 2710781253846435073}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8305569944160584583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2981322350378825808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d02e81c0fa35f0c49b39f6061f10bb8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dissableAfter: 1
+  itemPrefab: {fileID: 0}
+  itemID: 0
+  positionOffset: {x: 0, y: 0.3, z: 0}
+  rotationOffset: {x: 0, y: 0, z: 0}
+  scaleOffset: {x: 1, y: 1, z: 1}
+  isPlaced: 0
