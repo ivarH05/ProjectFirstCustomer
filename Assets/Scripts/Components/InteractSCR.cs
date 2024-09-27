@@ -17,7 +17,7 @@ public class InteractSCR : MonoBehaviour
 
     [Header("Data")]
     [SerializeField] private List<int> inventory;
-    public float maxDistance = 1.5f;
+    public float maxDistance = 2f;
 
 
     private GameObject itemObject;

@@ -1,0 +1,558 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &510350201988655840
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5217586969969327175}
+  m_Layer: 0
+  m_Name: Birds
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5217586969969327175
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510350201988655840}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2646670187719200847}
+  - {fileID: 7998937283911240845}
+  - {fileID: 3884604552980017334}
+  - {fileID: 1353390821084200665}
+  - {fileID: 1518661928888452480}
+  - {fileID: 3249097466217011149}
+  - {fileID: 5655334740298549023}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2007096174196610040
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5217586969969327175}
+    m_Modifications:
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -83.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -132
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192019389163029967, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_Name
+      value: HummingBirb (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bc01eb782d5f8ee4ea80bd133378bc0d, type: 3}
+--- !u!4 &7998937283911240845 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+    type: 3}
+  m_PrefabInstance: {fileID: 2007096174196610040}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4224522384474593386
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5217586969969327175}
+    m_Modifications:
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 166.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 113.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192019389163029967, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_Name
+      value: HummingBirb (6)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bc01eb782d5f8ee4ea80bd133378bc0d, type: 3}
+--- !u!4 &5655334740298549023 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+    type: 3}
+  m_PrefabInstance: {fileID: 4224522384474593386}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4698291251485454275
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5217586969969327175}
+    m_Modifications:
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -87.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -128.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192019389163029967, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_Name
+      value: HummingBirb (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bc01eb782d5f8ee4ea80bd133378bc0d, type: 3}
+--- !u!4 &3884604552980017334 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+    type: 3}
+  m_PrefabInstance: {fileID: 4698291251485454275}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5792069754810142522
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5217586969969327175}
+    m_Modifications:
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 177.41806
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -270.9799
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192019389163029967, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_Name
+      value: HummingBirb
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bc01eb782d5f8ee4ea80bd133378bc0d, type: 3}
+--- !u!4 &2646670187719200847 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+    type: 3}
+  m_PrefabInstance: {fileID: 5792069754810142522}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6470635464748173496
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5217586969969327175}
+    m_Modifications:
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -32.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 113.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192019389163029967, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_Name
+      value: HummingBirb (5)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bc01eb782d5f8ee4ea80bd133378bc0d, type: 3}
+--- !u!4 &3249097466217011149 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+    type: 3}
+  m_PrefabInstance: {fileID: 6470635464748173496}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7045902199115668213
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5217586969969327175}
+    m_Modifications:
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -182.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -72.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192019389163029967, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_Name
+      value: HummingBirb (4)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bc01eb782d5f8ee4ea80bd133378bc0d, type: 3}
+--- !u!4 &1518661928888452480 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+    type: 3}
+  m_PrefabInstance: {fileID: 7045902199115668213}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7355356231749329324
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5217586969969327175}
+    m_Modifications:
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -173.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -72.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192019389163029967, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+        type: 3}
+      propertyPath: m_Name
+      value: HummingBirb (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bc01eb782d5f8ee4ea80bd133378bc0d, type: 3}
+--- !u!4 &1353390821084200665 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8420407775743483765, guid: bc01eb782d5f8ee4ea80bd133378bc0d,
+    type: 3}
+  m_PrefabInstance: {fileID: 7355356231749329324}
+  m_PrefabAsset: {fileID: 0}
