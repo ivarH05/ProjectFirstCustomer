@@ -73,6 +73,7 @@ MonoBehaviour:
   positionOffset: {x: 0, y: 0, z: 0}
   rotationOffset: {x: 0, y: 0, z: 0}
   scaleOffset: {x: 1, y: 1, z: 1}
+  isPlaced: 0
 --- !u!1 &600686751191397562
 GameObject:
   m_ObjectHideFlags: 0
@@ -82,6 +83,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4186175304376672640}
+  - component: {fileID: 6877304091703223996}
   m_Layer: 0
   m_Name: CampFire
   m_TagString: Untagged
@@ -119,6 +121,19 @@ Transform:
   - {fileID: 3330189612931938471}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6877304091703223996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600686751191397562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e397e0bd85b75ee4cb99e1441bdc8f44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  done: 0
 --- !u!1 &2746353267964750430
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,6 +207,7 @@ MonoBehaviour:
   positionOffset: {x: 0, y: 0, z: 0}
   rotationOffset: {x: 0, y: 0, z: 0}
   scaleOffset: {x: 1, y: 1, z: 1}
+  isPlaced: 0
 --- !u!1 &2884537656100548649
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,6 +281,7 @@ MonoBehaviour:
   positionOffset: {x: 0, y: 0, z: 0}
   rotationOffset: {x: 0, y: 0, z: 0}
   scaleOffset: {x: 1, y: 1, z: 1}
+  isPlaced: 0
 --- !u!1 &3021627472937132667
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,6 +355,7 @@ MonoBehaviour:
   positionOffset: {x: 0, y: 0, z: 0}
   rotationOffset: {x: 0, y: 0, z: 0}
   scaleOffset: {x: 1, y: 1, z: 1}
+  isPlaced: 0
 --- !u!1 &3177933027814562507
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,6 +429,7 @@ MonoBehaviour:
   positionOffset: {x: 0, y: 0, z: 0}
   rotationOffset: {x: 0, y: 0, z: 0}
   scaleOffset: {x: 1, y: 1, z: 1}
+  isPlaced: 0
 --- !u!1 &3262431900277618161
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,6 +503,7 @@ MonoBehaviour:
   positionOffset: {x: 0, y: 0, z: 0}
   rotationOffset: {x: 0, y: 0, z: 0}
   scaleOffset: {x: 1, y: 1, z: 1}
+  isPlaced: 0
 --- !u!1 &4607396811274779731
 GameObject:
   m_ObjectHideFlags: 0
@@ -557,6 +577,7 @@ MonoBehaviour:
   positionOffset: {x: 0, y: 0, z: 0}
   rotationOffset: {x: 0, y: 0, z: 0}
   scaleOffset: {x: 1, y: 1, z: 1}
+  isPlaced: 0
 --- !u!1 &5227535764752594060
 GameObject:
   m_ObjectHideFlags: 0
@@ -630,6 +651,7 @@ MonoBehaviour:
   positionOffset: {x: 0, y: 0, z: 0}
   rotationOffset: {x: 0, y: 0, z: 0}
   scaleOffset: {x: 1, y: 1, z: 1}
+  isPlaced: 0
 --- !u!1 &5321709013162078879
 GameObject:
   m_ObjectHideFlags: 0
@@ -703,6 +725,7 @@ MonoBehaviour:
   positionOffset: {x: 0, y: 0, z: 0}
   rotationOffset: {x: 0, y: 0, z: 0}
   scaleOffset: {x: 1, y: 1, z: 1}
+  isPlaced: 0
 --- !u!1 &5935306057523526966
 GameObject:
   m_ObjectHideFlags: 0
@@ -776,6 +799,7 @@ MonoBehaviour:
   positionOffset: {x: 0, y: 0, z: 0}
   rotationOffset: {x: 0, y: 0, z: 0}
   scaleOffset: {x: 1, y: 1, z: 1}
+  isPlaced: 0
 --- !u!1 &6217185645874820038
 GameObject:
   m_ObjectHideFlags: 0
@@ -849,6 +873,7 @@ MonoBehaviour:
   positionOffset: {x: 0, y: 0, z: 0}
   rotationOffset: {x: 0, y: 0, z: 0}
   scaleOffset: {x: 1, y: 1, z: 1}
+  isPlaced: 0
 --- !u!1 &6338170700898918862
 GameObject:
   m_ObjectHideFlags: 0
@@ -922,6 +947,7 @@ MonoBehaviour:
   positionOffset: {x: 0, y: 0, z: 0}
   rotationOffset: {x: 0, y: 0, z: 0}
   scaleOffset: {x: 1, y: 1, z: 1}
+  isPlaced: 0
 --- !u!1 &6774858246991872269
 GameObject:
   m_ObjectHideFlags: 0
@@ -995,6 +1021,7 @@ MonoBehaviour:
   positionOffset: {x: 0, y: 0, z: 0}
   rotationOffset: {x: 0, y: 0, z: 0}
   scaleOffset: {x: 1, y: 1, z: 1}
+  isPlaced: 0
 --- !u!1 &7449992461433970594
 GameObject:
   m_ObjectHideFlags: 0
@@ -1068,6 +1095,7 @@ MonoBehaviour:
   positionOffset: {x: 0, y: 0, z: 0}
   rotationOffset: {x: 0, y: 0, z: 0}
   scaleOffset: {x: 1, y: 1, z: 1}
+  isPlaced: 0
 --- !u!1 &7904767141749234004
 GameObject:
   m_ObjectHideFlags: 0
@@ -1141,3 +1169,4 @@ MonoBehaviour:
   positionOffset: {x: 0, y: 0, z: 0}
   rotationOffset: {x: 0, y: 0, z: 0}
   scaleOffset: {x: 1, y: 1, z: 1}
+  isPlaced: 0

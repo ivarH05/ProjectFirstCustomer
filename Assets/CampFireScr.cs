@@ -22,6 +22,7 @@ public class CampFireScr : MonoBehaviour
                 return;
         }
         done = true;
+        GameManager.isNight = true;
         this.enabled = false;
     }
 }
